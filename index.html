@@ -91,6 +91,24 @@
         <p>&copy; 2024 Duck it. Todos los derechos reservados.</p>
     </footer>
     <!-- Enlaza el archivo JavaScript -->
-<script src="script.js"></script>
+<script>
+// Inserta el código JavaScript aquí
+document.querySelectorAll('.collection-item').forEach(item => {
+    const backImage = item.querySelector('.back');
+    const frontImage = item.querySelector('.front');
+
+    item.addEventListener('click', () => {
+        if (backImage.style.display === 'none') {
+            // Mostrar la imagen trasera y ocultar la delantera
+            backImage.style.display = 'block';
+            frontImage.style.display = 'none';
+        } else {
+            // Mostrar la imagen delantera y ocultar la trasera
+            backImage.style.display = 'none';
+            frontImage.style.display = 'block';
+        }
+    });
+});
+</script>
 </body>
 </html>
