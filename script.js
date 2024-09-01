@@ -80,8 +80,8 @@ function toggleMobileMenu() {
     navLinks.classList.toggle('active');
 }
 
-ddocument.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
+document.addEventListener('DOMContentLoaded', function() {
+document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
     
     // Selecciona todos los elementos con la clase .collection-item
     document.querySelectorAll('.collection-item').forEach(item => {
