@@ -7,11 +7,12 @@
 
 body {
     font-family: 'Nunito', sans-serif;
+    font-weight: 400;
     color: #333;
     line-height: 1.6;
     background-color: #fafafa;
     margin: 0;
-    text-align: center; /* Centra todo el texto en la página */
+    text-align: center;
 }
 
 /* Menú superior */
@@ -30,9 +31,12 @@ body {
 }
 
 .logo h1 {
-    font-size: 24px;
-    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700; /* Negrita */
+    font-style: italic;
+    font-size: 28px; /* Tamaño de fuente aumentado */
     color: #333;
+    text-transform: uppercase;
 }
 
 .nav-links {
@@ -47,17 +51,19 @@ body {
 }
 
 .nav-links li a {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700; /* Negrita */
+    font-size: 15px; /* Tamaño de fuente aumentado */
     text-decoration: none;
     color: #333;
-    font-size: 16px;
-    font-weight: 500;
+    text-transform: uppercase;
     display: block;
     width: 100%;
     height: 100%;
 }
 
 .nav-links li a:hover {
-    color: #FFD102; /* Nuevo color de resaltado */
+    color: #FFD102;
 }
 
 /* Menú desplegable */
@@ -73,11 +79,14 @@ body {
 }
 
 .dropdown-content a {
-    color: #000 !important;  /* Color del texto en estado normal */
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #000 !important;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    font-size: 16px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -86,8 +95,8 @@ body {
 }
 
 .dropdown-content a:hover {
-    background-color: #FFD102;  /* Fondo amarillo al resaltar */
-    color: #000 !important;  /* Texto negro al resaltar, con !important */
+    background-color: #FFD102;
+    color: #000 !important;
 }
 
 /* Mostrar el menú desplegable al pasar el cursor sobre el elemento padre */
@@ -103,13 +112,13 @@ header {
 /* Estilo de la sección principal (hero) */
 .hero {
     background: url('cabe.jpg') no-repeat center center/cover;
-    height: 40vh; /* Altura de la cabecera */
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
-    margin-top: 70px; /* Ajusta este valor según la altura de tu menú */
+    margin-top: 60px;
 }
 
 .hero-text {
@@ -120,14 +129,20 @@ header {
 }
 
 .hero h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-style: italic;
     font-size: 36px;
     margin-bottom: 10px;
     color: #fff;
 }
 
 .cta {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-style: italic;
     padding: 10px 20px;
-    background-color: #FFD102; /* Nuevo color de resaltado */
+    background-color: #FFD102;
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -149,7 +164,7 @@ header {
 /* Estilo de la cuadrícula de colecciones */
 .collection-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Asegura que cada columna tenga al menos 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 40px;
     justify-items: center;
@@ -162,9 +177,9 @@ header {
     border: 1px solid #ddd;
     text-align: center;
     transition: transform 0.3s ease;
-    max-width: 400px;  /* Limita el tamaño del contenedor */
-    margin: 0 auto 20px;  /* Centra el contenedor y añade margen inferior */
-    overflow: hidden;  /* Asegura que las imágenes no se desborden del contenedor */
+    max-width: 400px;
+    margin: 0 auto 20px;
+    overflow: hidden;
 }
 
 .collection-item img {
@@ -191,28 +206,66 @@ header {
     display: block;
 }
 
+/* Ocultar la talla frontal por defecto */
+.sizes.front-sizes {
+    display: none;
+}
+
+/* Mostrar la talla frontal cuando la imagen frontal se muestra */
+.collection-item:hover .back-sizes {
+    display: none;
+}
+
+.collection-item:hover .front-sizes {
+    display: block;
+}
+
+/* Estilo para las tallas */
+.sizes {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
 .collection-info {
     text-align: center;
-    margin-top: 10px;  /* Espacio entre la imagen y el texto */
+    margin-top: 10px;
 }
 
 .collection-info h3,
 .collection-info p {
     font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-style: italic;
     font-size: 18px;
     color: #333;
     margin: 0;
-    display: inline-block;  /* Alinea el texto y el precio en la misma línea */
-    font-weight: bold;  /* Aplica negrita tanto al nombre como al precio */
+    display: block;
 }
 
 .collection-info p {
     color: #FFD102;
-    margin-left: 10px;  /* Espacio entre el nombre del modelo y el precio */
+    margin-left: 0;
+}
+
+.collection-info .cta {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.collection-info .cta:hover {
+    background-color: #1ebe57;
 }
 
 .collection-item:hover {
-    transform: scale(1.05);  /* Pequeña ampliación al pasar el cursor */
+    transform: scale(1.05);
 }
 
 /* Estilo del footer */
@@ -241,8 +294,94 @@ footer a:hover {
 footer p {
     margin: 10px 0;
 }
+
 /* Selecciona específicamente los enlaces dentro del dropdown */
 .nav-links li .dropdown-content a:hover {
-    background-color: #FFD102;  /* Fondo amarillo */
-    color: #000 !important;  /* Texto negro con !important para forzar el estilo */
+    background-color: #FFD102;
+    color: #000 !important;
+}
+
+/* Sección de Nosotros */
+.about-us {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 20px;
+}
+
+.about-block {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center; /* Centrando el contenido */
+}
+
+.about-block h2 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.about-block p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Tamaño para móviles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links li {
+        padding: 10px 0;
+    }
+
+    .hero {
+        height: 30vh; /* Reduce la altura de la cabecera en móviles */
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .collection-grid {
+        grid-template-columns: 1fr; /* Una columna para dispositivos móviles */
+        gap: 10px;
+        padding: 20px;
+    }
+
+    .collection-item {
+        max-width: 90%; /* Asegura que el ancho máximo sea más pequeño en móviles */
+    }
+
+    .cta {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    footer p,
+    footer a {
+        font-size: 16px;
+    }
+
+    /* Sección de Nosotros */
+    .about-us {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
