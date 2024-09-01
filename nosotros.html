@@ -10,12 +10,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <!-- Enlace para Font Awesome para el ícono de carrito -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
                 <h1>Duck it</h1>
+            </div>
+            <div id="mobile-menu-icon">
+                <img src="menu.png" alt="Menu">
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
@@ -28,11 +33,27 @@
                 <li><a href="nosotros.html">Nosotros</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
+            <div class="cart-icon">
+                <img src="carrito.png" alt="Carrito" id="cart-image">
+                <span id="cart-count">0</span>
+            </div>
+            <div id="cart-modal" class="cart-modal">
+                <div class="cart-header">
+                    <h2>Carrito</h2>
+                    <span class="close-cart" onclick="toggleCart()">&times;</span>
+                </div>
+                <div id="cart-items" class="cart-content">
+                    <!-- Aquí se mostrarán los artículos del carrito -->
+                </div>
+                <div class="cart-footer">
+                    <button class="checkout" onclick="sendCartByWhatsApp()">Enviar Carrito por WhatsApp</button>
+                </div>
+            </div>
         </nav>
     </header>
 
     <section class="hero">
-       
+        <!-- Imagen de fondo o contenido hero -->
     </section>
 
     <main>
@@ -56,5 +77,8 @@
         <p>Para pedidos, contacta por <a href="https://wa.me/34672825712">WhatsApp</a></p>
         <p>&copy; 2024 Duck it. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Enlaza el archivo JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
