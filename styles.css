@@ -342,7 +342,7 @@ select {
 }
 
 .cart-content ul li button.remove-item {
-    bbackground-color: #e74c3c !important; /* Rojo más atractivo */
+    background-color: #e74c3c !important; /* Rojo más atractivo */
     color: white !important;
     border: none !important;
     padding: 7px 15px !important; /* Tamaño ligeramente aumentado */
@@ -482,5 +482,32 @@ footer p {
 
     .cart-icon {
         right: 20px;
+    }
+}
+
+/* Estilo para la sección "Nosotros" en bloques */
+.about-us {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas de igual tamaño */
+    gap: 20px; /* Espacio entre las columnas */
+    padding: 20px;
+    text-align: center; /* Centra el texto dentro de cada bloque */
+}
+
+.about-block {
+    background-color: #f4f4f4; /* Color de fondo para cada bloque */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados para cada bloque */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para un poco de profundidad */
+}
+
+/* Estilo responsive para móviles */
+@media (max-width: 768px) {
+    .about-us {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+
+    .about-block {
+        margin-bottom: 20px; /* Añadir espacio entre los bloques verticalmente */
     }
 }
