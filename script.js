@@ -30,7 +30,7 @@ function toggleCart() {
 
 function displayCartItems() {
     const cartItems = document.getElementById('cart-items');
-    cartItems.innerHTML = ''; 
+    cartItems.innerHTML = '';
 
     let totalCost = 0;
     cart.forEach((item, index) => {
@@ -42,7 +42,7 @@ function displayCartItems() {
     });
 
     const totalElement = document.querySelector('.cart-footer p');
-    if (totalElement) { 
+    if (totalElement) {
         totalElement.textContent = `Total: ${totalCost.toFixed(2)}€`;
     } else {
         console.error('Elemento .cart-footer p no encontrado.');
@@ -81,19 +81,18 @@ function toggleMobileMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Alternar el menú móvil
     document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
+    
+    // Abrir y cerrar el carrito
+    document.querySelector('.cart-icon').addEventListener('click', toggleCart);
 
-    // Selecciona todos los elementos con la clase .collection-item
-    document.querySelectorAll('.collection-item').forEach(item => {
-        const backImage = item.querySelector('.back');
-        const frontImage = item.querySelector('.front');
-
-        // Establecer la visibilidad inicial
-        backImage.style.display = 'none';
-        frontImage.style.display = 'block';
-
-        item.addEventListener('click', () => {
-            // Intercambiar la visibilidad de las imágenes
+    // Alternar imágenes solo cuando se hace clic en ellas
+    document.querySelectorAll('.collection-item img').forEach(image => {
+        image.addEventListener('click', function() {
+            const backImage = this.parentElement.querySelector('.back');
+            const frontImage = this.parentElement.querySelector('.front');
+            
             if (backImage.style.display === 'none') {
                 backImage.style.display = 'block';
                 frontImage.style.display = 'none';
@@ -103,11 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Manejar el evento touchstart para dispositivos móviles
-        item.addEventListener('touchstart', (e) => {
-            // Prevenir cualquier comportamiento predeterminado y manejar el clic manualmente
+        image.addEventListener('touchstart', function(e) {
             e.preventDefault();
-            item.click();  // Ejecuta la lógica de clic que ya configuramos
+            this.click();
         });
     });
 });
