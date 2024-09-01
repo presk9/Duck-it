@@ -82,33 +82,36 @@ function toggleMobileMenu() {
     navLinks.classList.toggle('active');
 }
 
-// Escuchar eventos de clic para el menú móvil y el carrito
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
-    document.querySelector('.cart-icon').addEventListener('click', toggleCart);
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     // Código para el menú móvil y el carrito que ya tienes
     document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
     document.querySelector('.cart-icon').addEventListener('click', toggleCart);
 
-    // Nuevo código para cambiar las imágenes al hacer clic
+    // Nuevo código para cambiar las imágenes al hacer clic o tocar
     const collectionItems = document.querySelectorAll('.collection-item');
 
     collectionItems.forEach(item => {
         item.addEventListener('click', function() {
-            const frontImage = item.querySelector('.front');
-            const backImage = item.querySelector('.back');
+            toggleImage(item);
+        });
 
-            // Si la imagen frontal está visible, cámbiala por la trasera y viceversa
-            if (frontImage.style.display === 'none') {
-                frontImage.style.display = 'block';
-                backImage.style.display = 'none';
-            } else {
-                frontImage.style.display = 'none';
-                backImage.style.display = 'block';
-            }
+        // Para asegurarte de que también funcione en dispositivos móviles
+        item.addEventListener('touchstart', function() {
+            toggleImage(item);
         });
     });
+
+    function toggleImage(item) {
+        const frontImage = item.querySelector('.front');
+        const backImage = item.querySelector('.back');
+
+        // Si la imagen frontal está visible, cámbiala por la trasera y viceversa
+        if (frontImage.style.display === 'none') {
+            frontImage.style.display = 'block';
+            backImage.style.display = 'none';
+        } else {
+            frontImage.style.display = 'none';
+            backImage.style.display = 'block';
+        }
+    }
 });
