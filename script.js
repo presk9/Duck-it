@@ -43,9 +43,12 @@ function displayCartItems() {
         totalCost += parseFloat(item.price) * item.quantity;
     });
 
-    // Actualiza el contenido del elemento <p> que ya existe en el footer
     const totalElement = document.querySelector('.cart-footer p');
-    totalElement.textContent = `Total: ${totalCost.toFixed(2)}€`;
+    if (totalElement) {  // Asegúrate de que el elemento existe antes de intentar modificarlo
+        totalElement.textContent = `Total: ${totalCost.toFixed(2)}€`;
+    } else {
+        console.error('Elemento .cart-footer p no encontrado.');
+    }
 }
 
 function removeItem(index) {
