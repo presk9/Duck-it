@@ -321,7 +321,7 @@ select {
     overflow-y: auto;
     transform: translateX(100%); /* Oculta el carrito inicialmente */
     transition: transform 0.3s ease-in-out;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .cart-modal.active {
