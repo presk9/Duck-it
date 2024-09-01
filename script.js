@@ -80,21 +80,30 @@ function toggleMobileMenu() {
     navLinks.classList.toggle('active');
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+ddocument.addEventListener('DOMContentLoaded', function() {
     document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
+    
+    // Selecciona todos los elementos con la clase .collection-item
     document.querySelectorAll('.collection-item').forEach(item => {
-    const backImage = item.querySelector('.back');
-    const frontImage = item.querySelector('.front');
+        const backImage = item.querySelector('.back');
+        const frontImage = item.querySelector('.front');
 
-    item.addEventListener('click', () => {
-        if (backImage.style.display === 'none') {
-            // Mostrar la imagen trasera y ocultar la delantera
-            backImage.style.display = 'block';
-            frontImage.style.display = 'none';
-        } else {
-            // Mostrar la imagen delantera y ocultar la trasera
-            backImage.style.display = 'none';
-            frontImage.style.display = 'block';
-        }
+        item.addEventListener('click', () => {
+            // Intercambiar la visibilidad de las imágenes
+            if (backImage.style.display === 'none' || backImage.style.display === '') {
+                backImage.style.display = 'block';
+                frontImage.style.display = 'none';
+            } else {
+                backImage.style.display = 'none';
+                frontImage.style.display = 'block';
+            }
+        });
+
+        // También maneja el evento touchstart para dispositivos móviles
+        item.addEventListener('touchstart', (e) => {
+            // Prevenir un clic rápido que podría revertir la imagen
+            e.preventDefault();
+            item.click();  // Ejecuta la lógica de clic que ya configuramos
+        });
     });
 });
