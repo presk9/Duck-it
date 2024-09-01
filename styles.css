@@ -425,7 +425,7 @@ footer p {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 1001; /* Asegura que el ícono esté por encima del menú */
+    z-index: 1000; /* Asegura que el ícono esté por encima del menú */
 }
 
 /* Ocultar el icono del menú móvil en pantallas grandes */
