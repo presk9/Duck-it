@@ -321,11 +321,12 @@ select {
     overflow-y: auto;
     transform: translateX(100%); /* Oculta el carrito inicialmente */
     transition: transform 0.3s ease-in-out;
-    z-index: 1001;
+    z-index: 1001; /* Z-index básico cuando el carrito está oculto */
 }
 
 .cart-modal.active {
     transform: translateX(0); /* Muestra el carrito al activarse */
+    z-index: 1100; /* Aumenta el z-index para que el carrito quede por delante del icono del menú */
 }
 
 .cart-content ul {
@@ -421,7 +422,7 @@ footer p {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    display: flex; /* Asegura que el ícono sea visible */
+    display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
