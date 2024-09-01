@@ -91,27 +91,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const collectionItems = document.querySelectorAll('.collection-item');
 
     collectionItems.forEach(item => {
+        let isFrontVisible = true; // Variable para rastrear el estado de la imagen visible
+
         item.addEventListener('click', function() {
-            toggleImage(item);
+            toggleImage(item, isFrontVisible);
+            isFrontVisible = !isFrontVisible; // Cambiar el estado después de cada clic
         });
 
         // Para asegurarte de que también funcione en dispositivos móviles
         item.addEventListener('touchstart', function() {
-            toggleImage(item);
+            toggleImage(item, isFrontVisible);
+            isFrontVisible = !isFrontVisible; // Cambiar el estado después de cada toque
         });
     });
 
-    function toggleImage(item) {
+    function toggleImage(item, showFront) {
         const frontImage = item.querySelector('.front');
         const backImage = item.querySelector('.back');
 
-        // Si la imagen frontal está visible, cámbiala por la trasera y viceversa
-        if (frontImage.style.display === 'none') {
-            frontImage.style.display = 'block';
-            backImage.style.display = 'none';
-        } else {
+        if (showFront) {
             frontImage.style.display = 'none';
             backImage.style.display = 'block';
+        } else {
+            frontImage.style.display = 'block';
+            backImage.style.display = 'none';
         }
     }
 });
