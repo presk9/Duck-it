@@ -79,5 +79,7 @@ function toggleMobileMenu() {
 }
 
 // Escuchar eventos de clic para el menú móvil y el carrito
-document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
-document.querySelector('.cart-icon').addEventListener('click', toggleCart);
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
+    document.querySelector('.cart-icon').addEventListener('click', toggleCart);
+});
