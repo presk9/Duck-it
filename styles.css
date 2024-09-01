@@ -428,6 +428,13 @@ footer p {
     z-index: 1001; /* Asegura que el ícono esté por encima del menú */
 }
 
+/* Ocultar el icono del menú móvil en pantallas grandes */
+@media (min-width: 769px) {
+    #mobile-menu-icon {
+        display: none;
+    }
+}
+
 #mobile-menu-icon img {
     width: 24px; /* Ajusta este valor al tamaño deseado */
     height: auto; /* Mantiene la proporción del ícono */
@@ -447,6 +454,7 @@ footer p {
         background-color: white;
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
         z-index: 1000; /* Asegúrate de que esté encima de otros elementos */
+        
     }
 
     .nav-links.active {
