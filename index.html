@@ -44,9 +44,16 @@
                     <span class="close-cart" onclick="toggleCart()">&times;</span>
                 </div>
                 <div id="cart-items" class="cart-content">
-                    <!-- Aquí se mostrarán los artículos del carrito -->
+                    <ul>
+                        <!-- Ejemplo de item en el carrito -->
+                        <li>
+                            Make Dope Stuffy - S - 30€ x 1 
+                            <<button class="remove-item" style="background-color: #e74c3c; color: white; padding: 7px 15px; border-radius: 5px; border: none; cursor: pointer;">Eliminar</button>
+                        </li>
+                    </ul>
                 </div>
                 <div class="cart-footer">
+                    <p style="font-weight: bold; font-size: 18px; text-align: right; margin-right: 20px;">Total: 30.00€</p>
                     <button class="checkout" onclick="sendCartByWhatsApp()">Enviar Carrito por WhatsApp</button>
                 </div>
             </div>

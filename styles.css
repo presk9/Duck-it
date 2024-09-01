@@ -342,26 +342,26 @@ select {
 }
 
 .cart-content ul li button.remove-item {
-    background-color: #FF6D4D; /* Fondo rojo claro */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-left: 10px; /* Espacio entre el texto del producto y el botón */
+    bbackground-color: #e74c3c !important; /* Rojo más atractivo */
+    color: white !important;
+    border: none !important;
+    padding: 7px 15px !important; /* Tamaño ligeramente aumentado */
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    display: inline-block !important; /* Asegura que el botón esté alineado correctamente */
+    transition: background-color 0.3s ease !important; /* Transición suave para el cambio de color */
 }
 
 .cart-content ul li button.remove-item:hover {
-    background-color: #cc0000; /* Rojo más oscuro al pasar el mouse */
+    background-color: #c0392b !important; /* Rojo más oscuro al pasar el mouse */
 }
 
 .cart-footer p {
-    font-weight: bold;
-    margin-top: 30px; /* Baja el texto del total */
-    font-size: 18px;
-    text-align: right; /* Alinea el texto a la derecha */
-    margin-right: 20px; /* Añade un margen a la derecha para separarlo del borde */
+    font-weight: bold !important; /* Negrita */
+    font-size: 18px !important;
+    text-align: center !important; /* Alinea el texto a la derecha */
+    margin-right: 20px !important; /* Añade un margen a la derecha para separarlo del borde */
 }
 
 .cart-footer .checkout {

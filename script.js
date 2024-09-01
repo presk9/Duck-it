@@ -32,7 +32,8 @@ function toggleCart() {
 
 function displayCartItems() {
     const cartItems = document.getElementById('cart-items');
-    cartItems.innerHTML = '';
+    cartItems.innerHTML = ''; // Limpia el contenido anterior
+
     let totalCost = 0;
     cart.forEach((item, index) => {
         const li = document.createElement('li');
@@ -42,9 +43,9 @@ function displayCartItems() {
         totalCost += parseFloat(item.price) * item.quantity;
     });
 
-    const total = document.createElement('p');
-    total.textContent = `Total: ${totalCost.toFixed(2)}€`;
-    cartItems.appendChild(total);
+    // Actualiza el contenido del elemento <p> que ya existe en el footer
+    const totalElement = document.querySelector('.cart-footer p');
+    totalElement.textContent = `Total: ${totalCost.toFixed(2)}€`;
 }
 
 function removeItem(index) {
