@@ -81,7 +81,7 @@ function toggleMobileMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
+    document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
     
     // Selecciona todos los elementos con la clase .collection-item
     document.querySelectorAll('.collection-item').forEach(item => {
@@ -90,16 +90,18 @@ document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobi
 
         item.addEventListener('click', () => {
             // Intercambiar la visibilidad de las imágenes
-            if (backImage.style.display === 'none' || backImage.style.display === '') {
-                backImage.style.display = 'block';
-                frontImage.style.display = 'none';
-            } else {
-                backImage.style.display = 'none';
+            if (frontImage.style.display === 'none') {
+                // Si la imagen frontal está oculta, mostrarla
                 frontImage.style.display = 'block';
+                backImage.style.display = 'none';
+            } else {
+                // Si la imagen frontal está visible, ocultarla y mostrar la trasera
+                frontImage.style.display = 'none';
+                backImage.style.display = 'block';
             }
         });
 
-        // También maneja el evento touchstart para dispositivos móviles
+        // Manejar el evento touchstart para dispositivos móviles
         item.addEventListener('touchstart', (e) => {
             // Prevenir un clic rápido que podría revertir la imagen
             e.preventDefault();
