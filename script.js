@@ -85,11 +85,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
     
     // Abrir y cerrar el carrito
-    document.querySelector('.cart-icon').addEventListener('click', toggleCart);
+    document.querySelector('.cart-icon').addEventListener('click', function(event) {
+        event.stopPropagation(); // Previene la propagación del evento para evitar conflictos
+        toggleCart();
+    });
 
     // Alternar imágenes solo cuando se hace clic en ellas
     document.querySelectorAll('.collection-item img').forEach(image => {
-        image.addEventListener('click', function() {
+        image.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevenir que otros elementos reciban el evento de clic
             const backImage = this.parentElement.querySelector('.back');
             const frontImage = this.parentElement.querySelector('.front');
             
@@ -102,9 +106,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        image.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            this.click();
+        image.addEventListener('touchstart', function(event) {
+            event.preventDefault(); // Prevenir cualquier comportamiento predeterminado
+            event.stopPropagation(); // Prevenir la propagación para evitar que el contenedor reciba el evento
+            this.click();  // Ejecuta la lógica de clic que ya configuramos
         });
     });
 });
