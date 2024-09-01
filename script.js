@@ -82,32 +82,19 @@ function toggleMobileMenu() {
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
-    document.querySelector('.cart-icon').addEventListener('click', toggleCart);
+    document.querySelectorAll('.collection-item').forEach(item => {
+    const backImage = item.querySelector('.back');
+    const frontImage = item.querySelector('.front');
 
-    // Código para alternar imágenes al tocar o hacer clic
-    const collectionItems = document.querySelectorAll('.collection-item');
-
-    collectionItems.forEach(item => {
-        item.addEventListener('click', function() {
-            toggleImage(item);
-        });
-
-        item.addEventListener('touchstart', function() {
-            toggleImage(item);
-        });
-    });
-
-    function toggleImage(item) {
-        const frontImage = item.querySelector('.front');
-        const backImage = item.querySelector('.back');
-
-        // Intercambia la visibilidad de las imágenes
-        if (frontImage.style.display === 'none') {
-            frontImage.style.display = 'block';
-            backImage.style.display = 'none';
-        } else {
-            frontImage.style.display = 'none';
+    item.addEventListener('click', () => {
+        if (backImage.style.display === 'none') {
+            // Mostrar la imagen trasera y ocultar la delantera
             backImage.style.display = 'block';
+            frontImage.style.display = 'none';
+        } else {
+            // Mostrar la imagen delantera y ocultar la trasera
+            backImage.style.display = 'none';
+            frontImage.style.display = 'block';
         }
-    }
+    });
 });
