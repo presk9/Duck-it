@@ -7,10 +7,8 @@ function onAddToCartClick(productName, price, sizeId) {
     const existingItemIndex = cart.findIndex(item => item.name === productName && item.size === size);
 
     if (existingItemIndex !== -1) {
-        // Si el artículo ya está en el carrito, aumenta la cantidad
         cart[existingItemIndex].quantity += 1;
     } else {
-        // Si no, añádelo como un nuevo artículo
         cart.push({ name: productName, price: price, size: size, quantity: 1 });
     }
 
@@ -32,7 +30,7 @@ function toggleCart() {
 
 function displayCartItems() {
     const cartItems = document.getElementById('cart-items');
-    cartItems.innerHTML = ''; // Limpia el contenido anterior
+    cartItems.innerHTML = ''; 
 
     let totalCost = 0;
     cart.forEach((item, index) => {
@@ -44,7 +42,7 @@ function displayCartItems() {
     });
 
     const totalElement = document.querySelector('.cart-footer p');
-    if (totalElement) {  // Asegúrate de que el elemento existe antes de intentar modificarlo
+    if (totalElement) { 
         totalElement.textContent = `Total: ${totalCost.toFixed(2)}€`;
     } else {
         console.error('Elemento .cart-footer p no encontrado.');
@@ -72,49 +70,44 @@ function sendCartByWhatsApp() {
     localStorage.removeItem('cart');
     cart = [];
     updateCartCount();
-    toggleCart(); // Cerrar el modal
+    toggleCart();
     window.location.href = `https://wa.me/34672825712?text=${message}`;
 }
 
-// Función para alternar el menú en pantallas móviles
+// Alternar el menú en pantallas móviles
 function toggleMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Código para el menú móvil y el carrito que ya tienes
     document.getElementById('mobile-menu-icon').addEventListener('click', toggleMobileMenu);
     document.querySelector('.cart-icon').addEventListener('click', toggleCart);
 
-    // Nuevo código para cambiar las imágenes al hacer clic o tocar
+    // Código para alternar imágenes al tocar o hacer clic
     const collectionItems = document.querySelectorAll('.collection-item');
 
     collectionItems.forEach(item => {
-        let isFrontVisible = true; // Variable para rastrear el estado de la imagen visible
-
         item.addEventListener('click', function() {
-            toggleImage(item, isFrontVisible);
-            isFrontVisible = !isFrontVisible; // Cambiar el estado después de cada clic
+            toggleImage(item);
         });
 
-        // Para asegurarte de que también funcione en dispositivos móviles
         item.addEventListener('touchstart', function() {
-            toggleImage(item, isFrontVisible);
-            isFrontVisible = !isFrontVisible; // Cambiar el estado después de cada toque
+            toggleImage(item);
         });
     });
 
-    function toggleImage(item, showFront) {
+    function toggleImage(item) {
         const frontImage = item.querySelector('.front');
         const backImage = item.querySelector('.back');
 
-        if (showFront) {
-            frontImage.style.display = 'none';
-            backImage.style.display = 'block';
-        } else {
+        // Intercambia la visibilidad de las imágenes
+        if (frontImage.style.display === 'none') {
             frontImage.style.display = 'block';
             backImage.style.display = 'none';
+        } else {
+            frontImage.style.display = 'none';
+            backImage.style.display = 'block';
         }
     }
 });
