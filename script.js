@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Alternar imágenes solo cuando se hace clic en ellas
-    document.querySelectorAll('.collection-item img').forEach(image => {
+    document.querySelectorAll('.collection-item img.front, .collection-item img.back').forEach(image => {
         image.addEventListener('click', function(event) {
             event.stopPropagation(); // Prevenir que otros elementos reciban el evento de clic
             const backImage = this.parentElement.querySelector('.back');
