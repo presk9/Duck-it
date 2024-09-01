@@ -10,35 +10,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <!-- Enlace para Font Awesome para el ícono de carrito -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">
-                <h1>Duck it</h1>
+    <div class="logo">
+        <h1>Duck it</h1>
+    </div>
+    <div id="mobile-menu-icon">
+        <img src="menu.png" alt="Menu" id="menu-image">
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Colecciones</a>
+            <div class="dropdown-content">
+                <a href="makeitsimple.html">Make It Simple</a>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Colecciones</a>
-                    <div class="dropdown-content">
-                        <a href="makeitsimple.html">Make It Simple</a>
-                        <!-- Página de Invierno deshabilitada -->
-                        <!-- <a href="invierno.html">Colección Invierno</a> -->
-                    </div>
-                </li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
+        </li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="#">Contacto</a></li>
+    </ul>
+    <div class="cart-icon">
+        <img src="carrito.png" alt="Carrito" id="cart-image">
+        <span id="cart-count">0</span>
+    </div>
+    <!-- Modal del carrito -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-header">
+            <h2>Carrito</h2>
+            <span class="close-cart" onclick="toggleCart()">&times;</span>
+        </div>
+        <div id="cart-items" class="cart-content">
+            <!-- Aquí se mostrarán los artículos del carrito -->
+        </div>
+        <div class="cart-footer">
+            <button class="checkout" onclick="sendCartByWhatsApp()">Enviar Carrito por WhatsApp</button>
+        </div>
+    </div>
+</nav>
     </header>
 
-    <section class="hero">
-        <!--<div class="hero-text">
-            <h2>Colecciones Exclusivas de Camisetas</h2>
-            <a href="verano.html" class="cta">Explorar Colección Verano</a>
-        </div>-->
-    </section>
+    <section class="hero"></section>
 
     <main>
         <section id="coleccion-verano" class="collection-grid">
@@ -49,10 +64,12 @@
                 <div class="collection-info">
                     <h3>Keep Going</h3>
                     <p>30€</p>
-                    <a href="https://wa.me/34672825712/?text=Hola, estoy interesado en esta camiseta: https://github.com/presk9/Duck-it/blob/main/modelo1_detras.jpg" class="cta">Preguntar por WhatsApp</a>
-                       <!-- Añadir las tallas aquí -->
-                <div class="sizes back-sizes">S M L</div>
-                <div class="sizes front-sizes">S M L</div>           
+                    <select id="size-selection-modelo1">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                    </select>
+                    <button class="cta add-to-cart" onclick="onAddToCartClick('Keep Going', '30', 'size-selection-modelo1')">Añadir al carrito</button>
                 </div>
             </div>
 
@@ -63,10 +80,12 @@
                 <div class="collection-info">
                     <h3>Make Dope Stuffy</h3>
                     <p>30€</p>
-                    <a href="https://wa.me/34672825712/?text=Hola, estoy interesado en esta camiseta: https://github.com/presk9/Duck-it/blob/main/modelo2_detras.jpg" class="cta">Preguntar por WhatsApp</a>
-                    <!-- Añadir las tallas aquí -->
-                <div class="sizes back-sizes">S M L</div>
-                <div class="sizes front-sizes">S M L</div>
+                    <select id="size-selection-modelo2">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                    </select>
+                    <button class="cta add-to-cart" onclick="onAddToCartClick('Make Dope Stuffy', '30', 'size-selection-modelo2')">Añadir al carrito</button>
                 </div>
             </div>
 
@@ -77,38 +96,40 @@
                 <div class="collection-info">
                     <h3>Summertime</h3>
                     <p>30€</p>
-                    <a href="https://wa.me/34672825712/?text=Hola, estoy interesado en esta camiseta: https://github.com/presk9/Duck-it/blob/main/modelo3_detras.jpg" class="cta">Preguntar por WhatsApp</a>
-                    <!-- Añadir las tallas aquí -->
-                <div class="sizes back-sizes">S M L</div>
-                <div class="sizes front-sizes">S M L</div>
+                    <select id="size-selection-modelo3">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                    </select>
+                    <button class="cta add-to-cart" onclick="onAddToCartClick('Summertime', '30', 'size-selection-modelo3')">Añadir al carrito</button>
                 </div>
             </div>
         </section>
+
+        <!-- Carrito Modal -->
+        <div id="cart-modal" class="cart-modal">
+            <div class="cart-content">
+                <span class="close-btn" onclick="toggleCart()">&times;</span>
+                <h2>Carrito</h2>
+                <ul id="cart-items"></ul>
+                <button onclick="sendCartByWhatsApp()" class="cta">Enviar Carrito por WhatsApp</button>
+            </div>
+        </div>
     </main>
 
     <footer>
         <p>Para pedidos, contacta por <a href="https://wa.me/34672825712">WhatsApp</a></p>
         <p>&copy; 2024 Duck it. Todos los derechos reservados.</p>
     </footer>
-    <!-- Enlaza el archivo JavaScript -->
-<script>
-// Inserta el código JavaScript aquí
-document.querySelectorAll('.collection-item').forEach(item => {
-    const backImage = item.querySelector('.back');
-    const frontImage = item.querySelector('.front');
 
-    item.addEventListener('click', () => {
-        if (backImage.style.display === 'none') {
-            // Mostrar la imagen trasera y ocultar la delantera
-            backImage.style.display = 'block';
-            frontImage.style.display = 'none';
-        } else {
-            // Mostrar la imagen delantera y ocultar la trasera
-            backImage.style.display = 'none';
-            frontImage.style.display = 'block';
-        }
-    });
-});
-</script>
+    <!-- Enlaza el archivo JavaScript -->
+    <script>
+        // Activa el menú móvil al hacer clic en el icono
+        document.getElementById('mobile-menu-icon').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>

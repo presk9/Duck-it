@@ -42,7 +42,18 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px; /* Aumenta la separación entre los elementos del menú */
+    position: absolute; /* Desplaza el menú hacia la izquierda */
+    left: 50%; /* Centra el menú */
+    transform: translateX(-50%); /* Asegura que el menú esté centrado */
+}
+
+.cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 40px; /* Ajusta este valor para mayor separación del borde derecho */
+    cursor: pointer;
+    z-index: 1001;
 }
 
 .nav-links li {
@@ -249,23 +260,126 @@ header {
     margin-left: 0;
 }
 
-.collection-info .cta {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #25d366;
+/* Estilo para el botón de añadir al carrito */
+button.add-to-cart {
+    background-color: #FFD102;
     color: white;
-    text-decoration: none;
-    font-size: 18px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
     border-radius: 5px;
+    cursor: pointer;
     margin-top: 10px;
 }
 
-.collection-info .cta:hover {
-    background-color: #1ebe57;
+button.add-to-cart:hover {
+    background-color: #FFC300;
 }
 
-.collection-item:hover {
-    transform: scale(1.05);
+/* Ajustar los selectores de talla */
+.sizes {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+select {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Ajustar la ubicación del icono del carrito */
+.cart-icon img {
+    width: 24px; /* Cambia este valor según el tamaño que desees */
+    height: auto; /* Mantiene la proporción del ícono */
+}
+
+#cart-count {
+    position: absolute;
+    top: -5px; /* Ajusta la posición según sea necesario */
+    right: -5px; /* Ajusta la posición según sea necesario */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* Estilos para el modal del carrito */
+.cart-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px; /* Ajusta el ancho del carrito */
+    height: 100%;
+    background-color: #f4f4f4;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto;
+    transform: translateX(100%); /* Oculta el carrito inicialmente */
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.cart-modal.active {
+    transform: translateX(0); /* Muestra el carrito al activarse */
+}
+
+.cart-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-content ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-content ul li button.remove-item {
+    background-color: #FF6D4D; /* Fondo rojo claro */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px; /* Espacio entre el texto del producto y el botón */
+}
+
+.cart-content ul li button.remove-item:hover {
+    background-color: #cc0000; /* Rojo más oscuro al pasar el mouse */
+}
+
+.cart-footer p {
+    font-weight: bold;
+    margin-top: 30px; /* Baja el texto del total */
+    font-size: 18px;
+    text-align: right; /* Alinea el texto a la derecha */
+    margin-right: 20px; /* Añade un margen a la derecha para separarlo del borde */
+}
+
+.cart-footer .checkout {
+    background-color: #FFD102; /* Fondo amarillo */
+    color: white;
+    font-weight: bold; /* Texto en negrita */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px; /* Espacio adicional arriba */
+    width: 100%; /* Ancho completo del contenedor */
+    text-align: center; /* Centrar el texto dentro del botón */
+}
+
+.cart-footer .checkout:hover {
+    background-color: #FFC300; /* Fondo amarillo más oscuro al pasar el mouse */
 }
 
 /* Estilo del footer */
@@ -301,87 +415,53 @@ footer p {
     color: #000 !important;
 }
 
-/* Sección de Nosotros */
-.about-us {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 40px;
-    gap: 20px;
+/* Icono del menú móvil */
+#mobile-menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
 }
 
-.about-block {
-    flex: 1;
-    padding: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center; /* Centrando el contenido */
+#mobile-menu-icon img {
+    width: 24px; /* Ajusta este valor al tamaño deseado */
+    height: auto; /* Mantiene la proporción del ícono */
 }
 
-.about-block h2 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.about-block p {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: #666;
-    line-height: 1.6;
-}
-
-/* Tamaño para móviles */
+/* Mostrar el icono del menú móvil en pantallas pequeñas */
 @media (max-width: 768px) {
-    .navbar {
+    .nav-links {
+        display: none;
         flex-direction: column;
-        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     }
 
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
+    .nav-links.active {
+        display: flex;
+    }
+
+    #mobile-menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .nav-links li {
-        padding: 10px 0;
+        padding: 15px 20px;
+        text-align: left;
     }
 
-    .hero {
-        height: 30vh; /* Reduce la altura de la cabecera en móviles */
-    }
-
-    .hero h2 {
-        font-size: 24px;
-    }
-
-    .collection-grid {
-        grid-template-columns: 1fr; /* Una columna para dispositivos móviles */
-        gap: 10px;
-        padding: 20px;
-    }
-
-    .collection-item {
-        max-width: 90%; /* Asegura que el ancho máximo sea más pequeño en móviles */
-    }
-
-    .cta {
-        font-size: 16px;
-        padding: 8px 16px;
-    }
-
-    footer p,
-    footer a {
-        font-size: 16px;
-    }
-
-    /* Sección de Nosotros */
-    .about-us {
-        flex-direction: column;
-        gap: 20px;
+    .cart-icon {
+        right: 20px;
     }
 }
